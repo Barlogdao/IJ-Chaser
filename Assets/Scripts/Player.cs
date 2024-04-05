@@ -6,8 +6,8 @@ public class Player : MonoBehaviour
 {
     private const string Horizontal = "Horizontal";
     private const string Vertical = "Vertical";
-    [SerializeField] private float _speed = 1f;
-    [SerializeField] private CharacterController _characterController;
+
+    [SerializeField] private Mover _mover;
 
 
     private void Update()
@@ -15,8 +15,8 @@ public class Player : MonoBehaviour
         float inputX = Input.GetAxis(Horizontal);
         float inputY = Input.GetAxis(Vertical);
 
-        Vector3 motion = new Vector3(inputX, 0, inputY) * _speed;
-        //_characterController.Move(motion * Time.deltaTime);
-        _characterController.SimpleMove(motion);
+        Vector3 direction = new Vector3(inputX, 0, inputY);
+
+        _mover.Move(direction);
     }
 }
