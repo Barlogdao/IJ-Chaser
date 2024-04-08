@@ -3,8 +3,8 @@ using UnityEngine;
 [RequireComponent(typeof(CharacterController))]
 public class PlayerMover : Mover
 {
-    [SerializeField] float _rotationSpeed;
-    [SerializeField] PlayerInput _playerInput;
+    [SerializeField] private float _rotationSpeed;
+    [SerializeField] private PlayerInput _playerInput;
 
     private CharacterController _characterController;
 
@@ -22,7 +22,6 @@ public class PlayerMover : Mover
     private void Move(Vector3 directionInput)
     {
         Vector3 direction = transform.TransformDirection(directionInput);
-
         Vector3 motion = (direction * Speed + Physics.gravity) * Time.deltaTime;
 
         _characterController.Move(motion);
